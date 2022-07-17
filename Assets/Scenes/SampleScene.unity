@@ -5333,8 +5333,8 @@ MonoBehaviour:
   wall:
     serializedVersion: 2
     m_Bits: 64
-  walljumpcount: 3
-  jumptime: 0.4
+  walljumpcount: 1
+  jumptime: 0.3
 --- !u!1 &457676224
 GameObject:
   m_ObjectHideFlags: 0

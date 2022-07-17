@@ -24,25 +24,33 @@ public class Powerpups : MonoBehaviour
         
         int dice_result = FindObjectOfType<DiceRoll>().num;
          if(dice_result == 1){
-        
+              Debug.Log("SpeedIncreased");
+              FindObjectOfType<PlayerController>().maxspeed = 1200;
+              FindObjectOfType<PlayerController>().initialspeed = 1000f;
          }
          else if(dice_result == 2){
-             Debug.Log("jump increase");
+             Debug.Log("Wall Jump Increase");
+             FindObjectOfType<PlayerController>().walljumpcount = 3;
          }
          else if(dice_result == 3){
              Debug.Log("speed decrease");
+             FindObjectOfType<PlayerController>().maxspeed = 300;
+             FindObjectOfType<PlayerController>().initialspeed = 250f;
          }
          else if(dice_result == 4){
-             Debug.Log("heavy player");
+             Debug.Log("wall jump off");
+             FindObjectOfType<PlayerController>().walljumpcount = 0;
          }
          else if(dice_result == 5){
-             Debug.Log("double jump unlocked");
+             Debug.Log("Longer Jump Unlocked");
+             FindObjectOfType<PlayerController>().jumptime = 0.5f;
          }
          else if(dice_result == 6){
              Debug.Log("5 wall jumps increase");
+             FindObjectOfType<PlayerController>().jumptime = 0.2f;
          }     
          else{
-            Debug.Log("kuch nahi hua bhai");
+            Debug.Log("Huh Seems Like you have nothing.");
          }
          Canvas.SetActive(false);
          rb.constraints = ~RigidbodyConstraints2D.FreezePosition;
