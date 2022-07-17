@@ -24,7 +24,7 @@ public class Powerpups : MonoBehaviour
         
         int dice_result = FindObjectOfType<DiceRoll>().num;
          if(dice_result == 1){
-            Debug.Log("speed increase");
+        
          }
          else if(dice_result == 2){
              Debug.Log("jump increase");

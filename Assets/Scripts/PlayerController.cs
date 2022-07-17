@@ -61,6 +61,9 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkradius, groundef);
         isNearWallleft =  Physics2D.OverlapCircle(leftPos.position, checkradius, wall);
         isNearWallright = Physics2D.OverlapCircle(rightPos.position, checkradius, wall);
+        bool isNearGroundleft = Physics2D.OverlapCircle(leftPos.position, checkradius, groundef);
+        bool isNearGroundright = Physics2D.OverlapCircle(rightPos.position, checkradius, groundef);
+
 
         if (isGrounded == true && Input.GetKeyDown("w")){
                  rb.AddForce((new Vector2(0 , jumpforce)), ForceMode2D.Impulse) ;
@@ -82,14 +85,14 @@ public class PlayerController : MonoBehaviour
         if(isGrounded){
             walljumpcounter = walljumpcount;
         }
-        if((Input.GetKeyDown("w") && (isGrounded == false && isNearWallleft == true)) && walljumpcounter!=0){
+        if((Input.GetKeyDown("w") && (isGrounded == false && (isNearWallleft == true|| isNearGroundleft == true))) && walljumpcounter!=0){
             //rb.AddForce(new Vector2(jumpforce/8, jumpforce/30f), ForceMode2D.Impulse);
-            rb.velocity = new Vector2(10, 25);
+            rb.velocity = new Vector2(5, 25);
             walljumpcounter -= 1;
         }
-        if((Input.GetKeyDown("w") && (isGrounded == false && isNearWallright == true)) && walljumpcounter!=0){
+        if((Input.GetKeyDown("w") && (isGrounded == false && (isNearWallright == true|| isNearGroundleft == true))) && walljumpcounter!=0){
             //rb.AddForce(new Vector2(-jumpforce/8, jumpforce/30f), ForceMode2D.Impulse);
-            rb.velocity = new Vector2(-10, 25);
+            rb.velocity = new Vector2(-5, 25);
             walljumpcounter -= 1;
         }
 
